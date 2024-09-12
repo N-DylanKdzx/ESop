@@ -76,7 +76,7 @@ public class Tipo_OrdenController {
 	public ResponseEntity<?> updateTipo_Orden(@PathVariable("id") Long id, @Valid @RequestBody Tipo_Orden cat){
 
 			Optional<Tipo_Orden> c = tipo_OrdenService.read(id);
-			if(c.isEmpty()) {
+			if(!c.isEmpty()) {
 				return new ResponseEntity<>(tipo_OrdenService.update(cat), HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -76,7 +76,7 @@ public class ProveedorController {
 	public ResponseEntity<?> updateProveedor(@PathVariable("id") Long id, @Valid @RequestBody Proveedor cat){
 
 			Optional<Proveedor> c = proveedorService.read(id);
-			if(c.isEmpty()) {
+			if(!c.isEmpty()) {
 				return new ResponseEntity<>(proveedorService.update(cat), HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

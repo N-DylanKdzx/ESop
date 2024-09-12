@@ -76,7 +76,7 @@ public class OrdenController {
 	public ResponseEntity<?> updateOrden(@PathVariable("id") Long id, @Valid @RequestBody Orden cat){
 
 			Optional<Orden> c = ordenService.read(id);
-			if(c.isEmpty()) {
+			if(!c.isEmpty()) {
 				return new ResponseEntity<>(ordenService.update(cat), HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

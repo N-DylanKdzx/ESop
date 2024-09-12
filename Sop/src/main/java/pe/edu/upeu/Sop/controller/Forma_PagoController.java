@@ -77,7 +77,7 @@ public class Forma_PagoController {
 	public ResponseEntity<?> updateForma_Pago(@PathVariable("id") Long id, @Valid @RequestBody Forma_Pago cat){
 
 			Optional<Forma_Pago> c = forma_PagoService.read(id);
-			if(c.isEmpty()) {
+			if(!c.isEmpty()) {
 				return new ResponseEntity<>(forma_PagoService.update(cat), HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
